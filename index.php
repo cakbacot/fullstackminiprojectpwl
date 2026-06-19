@@ -2,24 +2,21 @@
 include 'config.php';
 include 'header.php';
 
-// 1. Ambil data untuk Tabel Bahan dan Diagram
 $query = mysqli_query($koneksi, "SELECT b.*, k.nama_kategori 
                                  FROM bahan b 
                                  LEFT JOIN kategori_bahan k ON b.kategori_id = k.id 
                                  ORDER BY b.stok_saat_ini ASC");
 
-// Siapkan array untuk data diagram
 $nama_bahan = [];
 $stok_bahan = [];
-$data_tabel = []; // Inisialisasi array kosong menghindari undefined error jika DB kosong
+$data_tabel = []; 
 
 while ($row = mysqli_fetch_array($query)) {
     $nama_bahan[] = $row['nama_bahan'];
     $stok_bahan[] = $row['stok_saat_ini'];
-    $data_tabel[] = $row; // Simpan untuk ditampilkan di tabel status
+    $data_tabel[] = $row; 
 }
 
-// 2. Ambil data Riwayat Stok terbaru untuk Tabel Riwayat
 $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan 
                                          FROM riwayat_stok r 
                                          LEFT JOIN bahan b ON r.bahan_id = b.id 
@@ -36,7 +33,6 @@ $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan
     </div>
 
     <div class="row g-4">
-        
         <div class="col-lg-5">
             <div class="card shadow-sm border-0 rounded-3 h-100">
                 <div class="card-header bg-white pt-4 border-0">
@@ -58,7 +54,7 @@ $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan
                                     foreach ($data_tabel as $row) { 
                                         $is_kritis = ($row['stok_saat_ini'] <= $row['stok_minimum']);
                                         $badge_status = $is_kritis ? 
-                                            '<span class="badge bg-danger-subtle text-danger border border-danger">Perlu Restock</span>' : 
+                                            '<span class="badge text-white" style="background-color: #ff0707;">Perlu Restock</span>' : 
                                             '<span class="badge bg-success-subtle text-success border border-success">Aman</span>';
                                 ?>
                                 <tr>
@@ -99,10 +95,8 @@ $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan
                                 <?php 
                                 if (mysqli_num_rows($query_riwayat) > 0) {
                                     while ($r = mysqli_fetch_assoc($query_riwayat)) {
-                                        // Format Tanggal
                                         $tgl = date('d M H:i', strtotime($r['tanggal']));
                                         
-                                        // Pembeda Visual Masuk / Keluar
                                         if ($r['tipe'] == 'Masuk') {
                                             $badge_tipe = '<span class="badge bg-success text-white px-2 py-1">Masuk</span>';
                                             $jumlah_style = 'text-success fw-bold';
@@ -134,7 +128,6 @@ $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -148,7 +141,7 @@ $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan
             datasets: [{
                 label: 'Jumlah Stok (ml/gr)',
                 data: <?= json_encode($stok_bahan) ?>,
-                backgroundColor:' #fac23e',
+                backgroundColor: '#fac23e',
                 borderColor: '#fac23e',
                 borderWidth: 1,
                 borderRadius: 4
@@ -157,13 +150,12 @@ $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan
         options: { 
             responsive: true,
             maintainAspectRatio: false,
-            // BAGIAN INI UNTUK MEMATIKAN INTERAKSI
             hover: {
-                mode: null // Mematikan efek hover
+                mode: null 
             },
             plugins: {
                 tooltip: {
-                    enabled: false // Mematikan kotak info yang muncul saat di-hover
+                    enabled: false 
                 },
                 legend: {
                     labels: { color: '#FDFCF7' }
