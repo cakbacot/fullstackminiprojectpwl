@@ -1,6 +1,9 @@
 <?php 
 include 'config.php'; 
 ?>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
 <h2>Data Bahan</h2>
 <a href="bahan_add.php">+ Tambah Data</a>
 <table border="1">
