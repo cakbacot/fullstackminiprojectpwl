@@ -24,7 +24,7 @@ $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan
 ?>
 
 <div class="container mt-4 mb-5">
-    <h2 class="fw-bold mb-4 text-dark">📊 Dashboard Inventaris Kuro</h2>
+    <h2 class="fw-bold mb-4 text-dark" style="text-align: center;">📊 Dashboard Inventaris Kuro</h2>
 
     <div class="card shadow-sm border-0 rounded-3 mb-4">
         <div class="card-body p-4" style="position: relative; height:300px;">

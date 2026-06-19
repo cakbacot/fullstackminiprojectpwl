@@ -27,7 +27,6 @@ if(isset($_POST['submit'])){
         $update_berhasil = $stmt_update->execute();
 
         // 4. Catat ke tabel riwayat_stok
-        // PERBAIKAN: Kolom menggunakan 'tipe' (bukan jenis) dan menambahkan 'keterangan'
         $tipe = 'Keluar';
         
         // Menggunakan NOW() agar jam, menit, dan detik ikut tersimpan presisi di database

@@ -1,13 +1,8 @@
 <?php
-/**
- * File: config.php
- * Deskripsi: Pusat konfigurasi database untuk sistem inventaris Kuro
- */
 
-// Konfigurasi Database
 $host = "localhost";
-$user = "root";     // Default user Laragon
-$pass = "";         // Default password Laragon kosong
+$user = "root";     
+$pass = "";         
 $db   = "db_kuro_inventaris";
 
 // Membuat Koneksi

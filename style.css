@@ -1,16 +1,4 @@
-/* ============================================
-   INVENTARIS KURO — Global Stylesheet
-   Palette:
-     #000000  bg utama
-     #070707  bg header
-     #111111  bg card / surface
-     #E2CC97  emas (font, border, label)
-     #a8925a  emas redup (muted, placeholder)
-     #F10101  merah (aksen, tombol utama)
-     #FDFCF7  putih krem (teks tabel, input value)
-   ============================================ */
 
-/* ── Reset ── */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -163,11 +151,6 @@ tbody tr:hover {
   color: #a8925a;
 }
 
-/* ══════════════════════════════════════════
-   FORM — Modern
-   ══════════════════════════════════════════ */
-
-/* Form card container */
 .form-card {
   background: #111111;
   border: 1px solid #a8925a;
@@ -197,7 +180,6 @@ tbody tr:hover {
   margin-bottom: 20px;
 }
 
-/* Label */
 label {
   display: block;
   font-size: 0.72rem;
@@ -208,7 +190,6 @@ label {
   margin-bottom: 7px;
 }
 
-/* Text & number inputs */
 input[type="text"],
 input[type="number"],
 input[type="email"],
@@ -304,11 +285,6 @@ select option {
   margin: 4px 0 20px;
 }
 
-/* ══════════════════════════════════════════
-   BUTTONS
-   ══════════════════════════════════════════ */
-
-/* Primary — merah solid */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -427,9 +403,7 @@ select option {
   margin-top: 28px;
 }
 
-/* ══════════════════════════════════════════
-   PAGE LAYOUT HELPERS
-   ══════════════════════════════════════════ */
+
 .page-wrapper {
   max-width: 960px;
   margin: 40px auto;
@@ -457,17 +431,13 @@ select option {
   color: #F10101;
 }
 
-/* ══════════════════════════════════════════
-   UTILITY
-   ══════════════════════════════════════════ */
+
 .text-gold   { color: #E2CC97; }
 .text-muted  { color: #a8925a; }
 .text-cream  { color: #FDFCF7; }
 .text-red    { color: #F10101; }
 
-/* ══════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════ */
+
 @media (max-width: 640px) {
   header { padding: 14px 18px; gap: 16px; }
 
