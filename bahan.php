@@ -36,5 +36,5 @@ include 'header.php';
     }
     ?>
 </table>
-//menambahkan footer
+<!-- menambahkan footer -->
 <?php include 'footer.php'; ?>
