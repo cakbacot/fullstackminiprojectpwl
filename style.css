@@ -1,58 +1,490 @@
-/* Reset CSS */
-* {
+/* ============================================
+   INVENTARIS KURO — Global Stylesheet
+   Palette:
+     #000000  bg utama
+     #070707  bg header
+     #111111  bg card / surface
+     #E2CC97  emas (font, border, label)
+     #a8925a  emas redup (muted, placeholder)
+     #F10101  merah (aksen, tombol utama)
+     #FDFCF7  putih krem (teks tabel, input value)
+   ============================================ */
+
+/* ── Reset ── */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif; /* Font lebih modern */
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
-/* Terapkan background hitam ke seluruh body */
+/* ── Base ── */
 body {
   background-color: #000000;
-  color: #e2cc97; /* Warna font emas */
+  color: #E2CC97;
+  min-height: 100vh;
+  line-height: 1.6;
 }
 
-/* Styling Header */
+/* ══════════════════════════════════════════
+   HEADER & NAV
+   ══════════════════════════════════════════ */
 header {
-  background-color: #070707; /* Sedikit variasi hitam agar ada kedalaman */
-  padding: 20px;
-  border-bottom: 2px solid #f10101; /* Aksen merah pada pembatas header */
+  background-color: #070707;
+  padding: 18px 32px;
+  border-bottom: 2px solid #F10101;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
 }
 
 nav a {
-  color: #e2cc97; /* Font menu emas */
+  color: #E2CC97;
   text-decoration: none;
-  font-size: 18px;
-  margin-right: 20px;
-  transition: 0.3s;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 6px;
+  letter-spacing: 0.01em;
+  transition: color 0.2s, background 0.2s;
 }
 
 nav a:hover {
-  color: #f10101; /* Aksen merah saat di-hover */
+  color: #F10101;
+  background: rgba(241,1,1,.08);
 }
 
-/* Styling Tabel */
+nav a.active {
+  color: #F10101;
+  background: rgba(241,1,1,.10);
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════════
+   TABLE — Modern
+   ══════════════════════════════════════════ */
+.table-wrapper {
+  border: 1px solid #a8925a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,.55);
+  margin-top: 24px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  color: #fdfcf7; /* Teks tabel putih agar mudah dibaca di atas background hitam */
+  color: #FDFCF7;
+  font-size: 0.9rem;
 }
 
-th,
-td {
-  border: 1px solid #e2cc97; /* Border tabel warna emas */
-  padding: 12px;
-  text-align: left;
+thead {
+  background: #0a0a0a;
+  border-bottom: 1px solid #a8925a;
 }
 
 th {
-  background-color: #000000;
-  color: #e2cc97; /* Header tabel emas */
+  padding: 13px 18px;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: #a8925a;
+  background: transparent;
+  white-space: nowrap;
 }
 
-/* Aksen tambahan untuk status/tombol */
+td {
+  padding: 13px 18px;
+  border: none;
+  border-bottom: 1px solid #1a1a1a;
+  vertical-align: middle;
+  color: #FDFCF7;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr {
+  transition: background 0.14s;
+}
+
+tbody tr:hover {
+  background: #141414;
+}
+
+/* ── Table badges ── */
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+.badge-gold {
+  background: rgba(226,204,151,.10);
+  color: #E2CC97;
+  border: 1px solid rgba(226,204,151,.28);
+}
+
+.badge-cream {
+  background: rgba(253,252,247,.08);
+  color: #FDFCF7;
+  border: 1px solid rgba(253,252,247,.18);
+}
+
+/* ── Status kritis ── */
 .status-kritis {
-  color: #f10101; /* Merah untuk status kritis */
-  font-weight: bold;
+  color: #F10101;
+  font-weight: 700;
+}
+
+/* ── Tabular numbers ── */
+.num {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: #E2CC97;
+}
+
+.num-muted {
+  font-variant-numeric: tabular-nums;
+  color: #a8925a;
+}
+
+/* ══════════════════════════════════════════
+   FORM — Modern
+   ══════════════════════════════════════════ */
+
+/* Form card container */
+.form-card {
+  background: #111111;
+  border: 1px solid #a8925a;
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: 0 4px 28px rgba(0,0,0,.60);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Field */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 20px;
+}
+
+.field:last-of-type {
+  margin-bottom: 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Label */
+label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #a8925a;
+  margin-bottom: 7px;
+}
+
+/* Text & number inputs */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: #000000;
+  border: 1px solid #a8925a;
+  border-radius: 6px;
+  color: #FDFCF7;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  resize: vertical;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="search"]::placeholder,
+textarea::placeholder {
+  color: #2e2820;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+  border-color: #E2CC97;
+  box-shadow: 0 0 0 3px rgba(226,204,151,.12);
+}
+
+/* Select wrapper (custom arrow) */
+.select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrap::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #a8925a;
+}
+
+select {
+  width: 100%;
+  box-sizing: border-box;
+  background: #000000;
+  border: 1px solid #a8925a;
+  border-radius: 6px;
+  color: #FDFCF7;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 10px 38px 10px 14px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+select:focus {
+  border-color: #E2CC97;
+  box-shadow: 0 0 0 3px rgba(226,204,151,.12);
+}
+
+select option {
+  background: #111111;
+  color: #FDFCF7;
+}
+
+/* Form divider */
+.form-divider {
+  border: none;
+  border-top: 1px solid #1e1e1e;
+  margin: 4px 0 20px;
+}
+
+/* ══════════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════════ */
+
+/* Primary — merah solid */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #F10101;
+  color: #FDFCF7;
+  border: 1px solid #F10101;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+}
+
+.btn-primary:hover {
+  background: #c40000;
+  border-color: #c40000;
+  box-shadow: 0 4px 16px rgba(241,1,1,.38);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active { transform: translateY(0); }
+
+/* Secondary — emas outline */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #a8925a;
+  border: 1px solid #a8925a;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.16s, border-color 0.16s, background 0.16s, transform 0.1s;
+}
+
+.btn-secondary:hover {
+  color: #E2CC97;
+  border-color: #E2CC97;
+  background: rgba(226,204,151,.06);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active { transform: translateY(0); }
+
+/* Ghost — transparan, teks emas */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #E2CC97;
+  border: none;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-ghost:hover {
+  background: rgba(226,204,151,.08);
+  transform: translateY(-1px);
+}
+
+/* Danger — hapus outline merah */
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #F10101;
+  border: 1px solid #F10101;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.16s, box-shadow 0.16s, transform 0.1s;
+}
+
+.btn-danger:hover {
+  background: rgba(241,1,1,.10);
+  box-shadow: 0 2px 10px rgba(241,1,1,.25);
+  transform: translateY(-1px);
+}
+
+.btn-danger:active { transform: translateY(0); }
+
+/* Button group */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+/* ══════════════════════════════════════════
+   PAGE LAYOUT HELPERS
+   ══════════════════════════════════════════ */
+.page-wrapper {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 24px 60px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #a8925a;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #E2CC97;
+  margin: 0;
+}
+
+.page-title span {
+  color: #F10101;
+}
+
+/* ══════════════════════════════════════════
+   UTILITY
+   ══════════════════════════════════════════ */
+.text-gold   { color: #E2CC97; }
+.text-muted  { color: #a8925a; }
+.text-cream  { color: #FDFCF7; }
+.text-red    { color: #F10101; }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+@media (max-width: 640px) {
+  header { padding: 14px 18px; gap: 16px; }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .field-row { grid-template-columns: 1fr; }
+
+  .form-card { padding: 24px 18px; }
+
+  .btn-group {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .btn-group > * { justify-content: center; }
 }
