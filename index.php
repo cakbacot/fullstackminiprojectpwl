@@ -146,10 +146,10 @@ $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan
         data: {
             labels: <?= json_encode($nama_bahan) ?>,
             datasets: [{
-                label: 'Jumlah Stok Saat Ini',
+                label: 'Jumlah Stok (ml/gr)',
                 data: <?= json_encode($stok_bahan) ?>,
-                backgroundColor: 'rgba(33, 37, 41, 0.85)',
-                borderColor: 'rgba(33, 37, 41, 1)',
+                backgroundColor:' #fac23e',
+                borderColor: '#fac23e',
                 borderWidth: 1,
                 borderRadius: 4
             }]
@@ -157,8 +157,28 @@ $query_riwayat = mysqli_query($koneksi, "SELECT r.*, b.nama_bahan, b.satuan
         options: { 
             responsive: true,
             maintainAspectRatio: false,
+            // BAGIAN INI UNTUK MEMATIKAN INTERAKSI
+            hover: {
+                mode: null // Mematikan efek hover
+            },
+            plugins: {
+                tooltip: {
+                    enabled: false // Mematikan kotak info yang muncul saat di-hover
+                },
+                legend: {
+                    labels: { color: '#FDFCF7' }
+                }
+            },
             scales: { 
-                y: { beginAtZero: true } 
+                y: { 
+                    beginAtZero: true,
+                    ticks: { color: '#FDFCF7' },
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                },
+                x: {
+                    ticks: { color: '#FDFCF7' },
+                    grid: { display: false }
+                }
             } 
         }
     });
