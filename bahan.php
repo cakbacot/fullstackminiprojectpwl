@@ -1,9 +1,8 @@
 <?php 
 include 'config.php'; 
+include 'header.php';
 ?>
-<head>
-    <link rel="stylesheet" href="style.css">
-</head>
+
 <h2>Data Bahan</h2>
 <a href="bahan_add.php">+ Tambah Data</a>
 <table border="1">
@@ -37,3 +36,5 @@ include 'config.php';
     }
     ?>
 </table>
+//menambahkan footer
+<?php include 'footer.php'; ?>
